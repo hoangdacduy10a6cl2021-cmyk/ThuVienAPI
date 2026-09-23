@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Reflection.Emit;
-using WebAPI_simple.Models.Domain;
+using WebBanSach.Models.Domain;
 
-namespace WebAPI_simple.Data
+namespace WebBanSach.Data
 {
     public class AppDbContext : DbContext
     {
