@@ -88,6 +88,33 @@ namespace WebBanSach.Controllers
                     $"{nameof(addBookRequestDTO.Rate)} cannot be less than 0 and more than 5");
             }
 
+            // kiem tra PublisherID co ton tai khong
+            var publisherExists = _dbContext.Publishers.Any(p => p.Id == addBookRequestDTO.PublisherID);
+            if (!publisherExists)
+            {
+                ModelState.AddModelError(nameof(addBookRequestDTO.PublisherID),
+                    $"PublisherID {addBookRequestDTO.PublisherID} does not exist");
+            }
+
+            // kiem tra AuthorIds co ton tai khong
+            if (addBookRequestDTO.AuthorIds == null || addBookRequestDTO.AuthorIds.Count == 0)
+            {
+                ModelState.AddModelError(nameof(addBookRequestDTO.AuthorIds),
+                    $"Please select at least one author");
+            }
+            else
+            {
+                foreach (var authorId in addBookRequestDTO.AuthorIds)
+                {
+                    var authorExists = _dbContext.Authors.Any(a => a.Id == authorId);
+                    if (!authorExists)
+                    {
+                        ModelState.AddModelError(nameof(addBookRequestDTO.AuthorIds),
+                            $"AuthorId {authorId} does not exist");
+                    }
+                }
+            }
+
             if (ModelState.ErrorCount > 0)
             {
                 return false;
