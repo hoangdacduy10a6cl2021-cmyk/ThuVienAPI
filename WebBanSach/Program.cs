@@ -70,6 +70,8 @@ builder.Services.AddScoped<IBookRepository, SQLBookRepository>();
 builder.Services.AddScoped<IAuthorRepository, SQLAuthorRepository>();
 builder.Services.AddScoped<IPublisherRepository, SQLPublisherRepository>();
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<IImageRepository, LocalImageRepository>();
 
 // ===== config identity user (Phần 8) =====
 builder.Services.AddIdentityCore<IdentityUser>()
@@ -114,6 +116,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
+app.UseStaticFiles();
 app.UseAuthorization();
 
 app.MapControllers();

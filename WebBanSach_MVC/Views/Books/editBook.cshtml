@@ -1,0 +1,41 @@
+﻿@model WebBanSach_MVC.Models.DTO.editBookDTO
+@{
+    var book = ViewBag.Book;
+    var listAuthor = ViewBag.listAuthor;
+    var listPublisher = ViewBag.listPublisher;
+}
+<h2>Edit book:</h2>
+<form asp-controller="Books" asp-action="editBook" asp-route-id="@book.Id" method="POST">
+    <label>Title</label><input type="text" name="title" asp-for="Title" value="@book.Title" /><br />
+    <label>Description</label><input type="text" name="description" asp-for="Description" value="@book.Description" /><br />
+    <label>IsRead</label>
+    @if (@book.IsRead == true)
+    {
+        <input type="radio" name="isRead" asp-for="IsRead" value="True" checked /> <label>Yes</label>
+        <input type="radio" name="isRead" asp-for="IsRead" value="False" /> <label>No</label><br />
+    }
+    else
+    {
+        <input type="radio" name="isRead" asp-for="IsRead" value="True" /> <label>Yes</label>
+        <input type="radio" name="isRead" asp-for="IsRead" value="False" checked /> <label>No</label><br />
+    }
+    <br />
+    <label>DateRead</label><input type="datetime" name="dateRead" asp-for="DateRead" value="@book.DateRead" /><br />
+    <label>Rate</label><input type="number" name="rate" asp-for="Rate" value="@book.Rate" /><br />
+    <label>Genre</label><input type="text" name="genre" asp-for="Genre" value="@book.Genre" /><br />
+    <label>Cover Url</label><input type="text" name="coverUrl" asp-for="CoverUrl" value="@book.CoverUrl" /><br />
+    <label>DateAdded:</label><input type="datetime" name="dateAdded" asp-for="DateAdded" value="@book.DateAdded" /><br />
+    <label>Publisher:</label><span>@book.PublisherName</span><select name="publisherID">
+    @foreach (var item in listPublisher)
+    {
+        <option value="@item.Id">@item.Name</option>
+    }
+</select><br />
+<label>Author:</label> <select name="authorIds" multiple>
+@foreach (var item in listAuthor)
+{
+    <option value="@item.Id">@item.FullName</option>
+}
+</select><br />
+<input type="submit" value="Save" />
+</form>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<WebBanSach_MVC.Models.DTO.BookDTO>
+<h2>List all books</h2>
+
+<a class="btn btn-primary" asp-controller="Books" asp-action="addBook">Add new book</a>
+
+<form asp-controller="Books" asp-action="Index" method="GET">
+    <label>Tìm kiếm sách: </label>
+    <select name="filterOn" id="filterOn">
+        <option value="title">Tiêu đề</option>
+        <option value="author">Tác giả</option>
+        <option value="publisher">Nhà xuất bản</option>
+    </select>
+    <input type="text" name="filterQuery" />
+    <label>Sắp xếp:</label>
+    <select name="sortBy" id="sortBy">
+        <option value="title">Tiêu đề</option>
+        <option value="rate">Đánh giá</option>
+    </select>
+    <label>Tăng dần: </label><input type="radio" name="isAscending" value="True" />
+    <label>Giảm dần: </label><input type="radio" name="isAscending" value="False" />
+    <input type="submit" value="Search" />
+</form>
+
+<table class="table">
+    <tr>
+        <th>Id code</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Publisher</th>
+        <th>Rating</th>
+        <th>Detail</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Title</td>
+            <td>@foreach(var i in item.AuthorNames){
+                @i
+                <br />
+            }
+        </td>
+        <td>@item.PublisherName</td>
+        <td>
+            @for (var i = 0; i < item.Rate; i++)
+            {
+                <span class="glyphicon glyphicon-star"></span>
+            }
+        </td>
+        <td> <a asp-area="" asp-controller="Books" asp-action="listBook" asp-route-id="@item.Id">Detail</a></td>
+        <td> <a asp-area="" asp-controller="Books" asp-action="editBook" asp-route-id="@item.Id">Edit</a></td>
+        <td> <a asp-area="" asp-controller="Books" asp-action="delBook" asp-route-id="@item.Id">Delete</a></td>
+    </tr>
+}
+</table>

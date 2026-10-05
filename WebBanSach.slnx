@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="WebBanSach/WebBanSach.csproj" />
+  <Project Path="WebBanSach_MVC/WebBanSach_MVC.csproj" Id="eaeef655-012a-46e2-a535-b784107118c0" />
 </Solution>

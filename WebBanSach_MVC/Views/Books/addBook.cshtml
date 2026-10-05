@@ -1,0 +1,28 @@
+﻿@model WebBanSach_MVC.Models.DTO.addBookDTO
+@{
+    var listAuthor = ViewBag.listAuthor;
+    var listPublisher = ViewBag.listPublisher;
+}
+<form asp-controller="Books" asp-action="addBook" method="POST">
+    <label>Title</label><input type="text" name="title" asp-for="title" /><span asp-validation-for="title" class="text-danger"></span><br />
+    <label>Description</label><input type="text" name="description" asp-for="description" /><br />
+    <label>IsRead</label><input type="radio" name="isRead" asp-for="isRead" value="True" /> Yes <input type="radio" name="isRead" asp-for="isRead" value="False" /> No<br />
+    <label>DateRead</label><input type="date" name="dateRead" asp-for="dateRead" /><br />
+    <label>Rate</label><input type="number" name="rate" asp-for="rate" /><br />
+    <label>Genre</label><input type="text" name="genre" asp-for="genre" /><br />
+    <label>Cover Url</label><input type="text" name="coverUrl" asp-for="coverUrl" /><br />
+    <label>DateAdded:</label><input type="date" name="dateAdded" asp-for="dateAdded" /><br />
+    <label>Publisher:</label><select name="publisherID">
+    @foreach (var item in listPublisher)
+    {
+        <option value="@item.Id">@item.Name</option>
+    }
+</select>
+<label>Author:</label> <select name="authorIds" multiple>
+@foreach (var item in listAuthor)
+{
+    <option value="@item.Id">@item.FullName</option>
+}
+</select>
+<input type="submit" />
+</form>

@@ -1,0 +1,42 @@
+﻿@model WebBanSach_MVC.Models.DTO.BookDTO
+<h1>Thông tin sách:</h1>
+<img src="@Model.CoverUrl" style="float:left;width:200px; margin-right:10px;" />
+<p>Tên sách: @Model.Title</p>
+<p>Mô tả: @Model.Description</p>
+<p>Date read: @Model.DateRead</p>
+<p>
+    Is Read?
+    @if (Model.IsRead == true)
+    {
+        <input type="radio" id="isRead" name="isRead" value="Yes" checked> <label>Read</label>
+        <input type="radio" id="isRead" name="isRead" value="No"> <label>Not Read</label>
+    }
+    else
+    {
+        <input type="radio" id="isRead" name="isRead" value="Yes"> <label>Read</label>
+        <input type="radio" id="isRead" name="isRead" value="No" checked> <label>Not Read</label>
+    }
+</p>
+<p>
+    Review:
+    @if (Model.IsRead == true)
+    {
+        for (var i = 0; i < @Model.Rate; i++)
+        {
+            <span class="glyphicon glyphicon-star"></span>
+        }
+    }
+    else
+    {
+        <span>Not yet read</span>
+    }
+    <p>Thể loại: @Model.Genre</p>
+    <p>Date read: @Model.DateAdded</p>
+    <p>Nhà xuất bản: @Model.PublisherName</p>
+    <p>
+        Tác giả:
+        @foreach (var item in Model.AuthorNames)
+        {
+            <a href="#linktacgia">@item </a>
+        }
+    </p>
