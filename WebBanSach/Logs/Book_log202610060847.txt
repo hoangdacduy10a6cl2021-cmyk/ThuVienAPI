@@ -1,0 +1,25 @@
+2026-10-06 08:47:05.372 +07:00 [INF] Request starting HTTP/1.1 POST https://localhost:7207/api/Books/add-book - application/json; charset=utf-8 275
+2026-10-06 08:47:05.379 +07:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Write)
+2026-10-06 08:47:05.380 +07:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-10-06 08:47:05.381 +07:00 [INF] Request finished HTTP/1.1 POST https://localhost:7207/api/Books/add-book - 401 0 null 8.7766ms
+2026-10-06 08:47:05.414 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7207/api/Authors/get-all-author - null null
+2026-10-06 08:47:05.417 +07:00 [INF] Executing endpoint 'WebBanSach.Controllers.AuthorsController.GetAllAuthor (WebBanSach)'
+2026-10-06 08:47:05.418 +07:00 [INF] Route matched with {action = "GetAllAuthor", controller = "Authors"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllAuthor() on controller WebBanSach.Controllers.AuthorsController (WebBanSach).
+2026-10-06 08:47:05.461 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[FullName]
+FROM [Authors] AS [a]
+2026-10-06 08:47:05.464 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebBanSach.Models.DTO.AuthorDTO, WebBanSach, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-10-06 08:47:05.465 +07:00 [INF] Executed action WebBanSach.Controllers.AuthorsController.GetAllAuthor (WebBanSach) in 46.0523ms
+2026-10-06 08:47:05.467 +07:00 [INF] Executed endpoint 'WebBanSach.Controllers.AuthorsController.GetAllAuthor (WebBanSach)'
+2026-10-06 08:47:05.468 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7207/api/Authors/get-all-author - 200 null application/json; charset=utf-8 53.9206ms
+2026-10-06 08:47:05.471 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7207/api/Publishers/get-all-publisher - null null
+2026-10-06 08:47:05.474 +07:00 [INF] Executing endpoint 'WebBanSach.Controllers.PublishersController.GetAllPublisher (WebBanSach)'
+2026-10-06 08:47:05.476 +07:00 [INF] Route matched with {action = "GetAllPublisher", controller = "Publishers"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllPublisher() on controller WebBanSach.Controllers.PublishersController (WebBanSach).
+2026-10-06 08:47:05.479 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Name]
+FROM [Publishers] AS [p]
+2026-10-06 08:47:05.480 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebBanSach.Models.DTO.PublisherDTO, WebBanSach, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-10-06 08:47:05.481 +07:00 [INF] Executed action WebBanSach.Controllers.PublishersController.GetAllPublisher (WebBanSach) in 4.2373ms
+2026-10-06 08:47:05.482 +07:00 [INF] Executed endpoint 'WebBanSach.Controllers.PublishersController.GetAllPublisher (WebBanSach)'
+2026-10-06 08:47:05.484 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7207/api/Publishers/get-all-publisher - 200 null application/json; charset=utf-8 12.5494ms

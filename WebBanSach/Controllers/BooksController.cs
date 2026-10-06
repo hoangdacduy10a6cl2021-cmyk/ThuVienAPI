@@ -29,7 +29,7 @@ namespace WebBanSach.Controllers
         //get all books
         // GET: /api/Books/get-all-books?filterOn=Name&filterQuery=Track
         [HttpGet("get-all-books")]
-        [Authorize(Roles = "Read")]
+        //[Authorize(Roles = "Read")]
         public IActionResult GetAll([FromQuery] string? filterOn, [FromQuery] string? filterQuery,
             [FromQuery] string? sortBy, [FromQuery] bool isAscending,
             [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 100)
@@ -49,7 +49,7 @@ namespace WebBanSach.Controllers
 
         [HttpGet]
         [Route("get-book-by-id/{id}")]
-        [Authorize(Roles = "Read")]
+        //[Authorize(Roles = "Read")]
         public IActionResult GetBookById([FromRoute] int id)
         {
             var bookWithIdDTO = _bookRepository.GetBookById(id);
@@ -58,7 +58,7 @@ namespace WebBanSach.Controllers
 
         [HttpPost("add-book")]
         [ValidateModel]
-        [Authorize(Roles = "Write")]
+        //[Authorize(Roles = "Write")]
         public IActionResult AddBook([FromBody] AddBookRequestDTO addBookRequestDTO)
         {
             if (ValidateAddBook(addBookRequestDTO))
@@ -70,7 +70,7 @@ namespace WebBanSach.Controllers
         }
 
         [HttpPut("update-book-by-id/{id}")]
-        [Authorize(Roles = "Write")]
+        //[Authorize(Roles = "Write")]
         public IActionResult UpdateBookById(int id, [FromBody] AddBookRequestDTO bookDTO)
         {
             var updateBook = _bookRepository.UpdateBookById(id, bookDTO);
@@ -78,7 +78,7 @@ namespace WebBanSach.Controllers
         }
 
         [HttpDelete("delete-book-by-id/{id}")]
-        [Authorize(Roles = "Write")]
+        //[Authorize(Roles = "Write")]
         public IActionResult DeleteBookById(int id)
         {
             var deleteBook = _bookRepository.DeleteBookById(id);

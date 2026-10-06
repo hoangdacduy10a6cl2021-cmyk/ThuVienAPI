@@ -1,0 +1,5 @@
+2026-10-06 08:36:24.920 +07:00 [INF] Request starting HTTP/1.1 POST https://localhost:7207/api/Books/add-book - application/json; charset=utf-8 370
+2026-10-06 08:36:24.926 +07:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Write)
+2026-10-06 08:36:24.927 +07:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-10-06 08:36:24.927 +07:00 [INF] Request finished HTTP/1.1 POST https://localhost:7207/api/Books/add-book - 401 0 null 7.6717ms

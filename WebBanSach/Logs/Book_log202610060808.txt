@@ -1,0 +1,13 @@
+2026-10-06 08:08:45.142 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7207/api/Images/Upload - multipart/form-data; boundary=----WebKitFormBoundaryVR1zDQeIJdeUNIwN 149679
+2026-10-06 08:08:45.188 +07:00 [INF] Executing endpoint 'WebBanSach.Controllers.ImagesController.Upload (WebBanSach)'
+2026-10-06 08:08:45.212 +07:00 [INF] Route matched with {action = "Upload", controller = "Images"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Upload(WebBanSach.Models.DTO.ImageUploadRequestDTO) on controller WebBanSach.Controllers.ImagesController (WebBanSach).
+2026-10-06 08:08:46.248 +07:00 [INF] Executed DbCommand (29ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = Int64)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Images] ([FileDescription], [FileExtension], [FileName], [FilePath], [FileSizeInBytes])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2026-10-06 08:08:46.280 +07:00 [INF] Executing OkObjectResult, writing value of type 'WebBanSach.Models.Domain.Image'.
+2026-10-06 08:08:46.297 +07:00 [INF] Executed action WebBanSach.Controllers.ImagesController.Upload (WebBanSach) in 1081.4812ms
+2026-10-06 08:08:46.299 +07:00 [INF] Executed endpoint 'WebBanSach.Controllers.ImagesController.Upload (WebBanSach)'
+2026-10-06 08:08:46.307 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7207/api/Images/Upload - 200 null application/json; charset=utf-8 1164.9742ms

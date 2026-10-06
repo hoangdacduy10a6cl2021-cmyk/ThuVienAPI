@@ -3,6 +3,14 @@
     var listAuthor = ViewBag.listAuthor;
     var listPublisher = ViewBag.listPublisher;
 }
+
+@if (ViewBag.Error != null)
+{
+    <div style="color:red; font-weight:bold; margin-bottom:10px;">
+        Lỗi: @ViewBag.Error
+    </div>
+}
+
 <form asp-controller="Books" asp-action="addBook" method="POST">
     <label>Title</label><input type="text" name="title" asp-for="title" /><span asp-validation-for="title" class="text-danger"></span><br />
     <label>Description</label><input type="text" name="description" asp-for="description" /><br />

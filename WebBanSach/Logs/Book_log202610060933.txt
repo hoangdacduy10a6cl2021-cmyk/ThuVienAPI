@@ -1,0 +1,380 @@
+2026-10-06 09:33:00.318 +07:00 [INF] Request starting HTTP/1.1 POST https://localhost:7207/api/Books/add-book - application/json; charset=utf-8 290
+2026-10-06 09:33:00.322 +07:00 [INF] Executing endpoint 'WebBanSach.Controllers.BooksController.AddBook (WebBanSach)'
+2026-10-06 09:33:00.323 +07:00 [INF] Route matched with {action = "AddBook", controller = "Books"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddBook(WebBanSach.Models.DTO.AddBookRequestDTO) on controller WebBanSach.Controllers.BooksController (WebBanSach).
+2026-10-06 09:33:00.327 +07:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2026-10-06 09:33:00.329 +07:00 [INF] Executed action WebBanSach.Controllers.BooksController.AddBook (WebBanSach) in 3.7478ms
+2026-10-06 09:33:00.330 +07:00 [INF] Executed endpoint 'WebBanSach.Controllers.BooksController.AddBook (WebBanSach)'
+2026-10-06 09:33:00.331 +07:00 [INF] Request finished HTTP/1.1 POST https://localhost:7207/api/Books/add-book - 400 null application/problem+json; charset=utf-8 13.3643ms
+2026-10-06 09:33:00.349 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7207/api/Authors/get-all-author - null null
+2026-10-06 09:33:00.351 +07:00 [INF] Executing endpoint 'WebBanSach.Controllers.AuthorsController.GetAllAuthor (WebBanSach)'
+2026-10-06 09:33:00.352 +07:00 [INF] Route matched with {action = "GetAllAuthor", controller = "Authors"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllAuthor() on controller WebBanSach.Controllers.AuthorsController (WebBanSach).
+2026-10-06 09:33:00.355 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[FullName]
+FROM [Authors] AS [a]
+2026-10-06 09:33:00.356 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebBanSach.Models.DTO.AuthorDTO, WebBanSach, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-10-06 09:33:00.357 +07:00 [INF] Executed action WebBanSach.Controllers.AuthorsController.GetAllAuthor (WebBanSach) in 4.4807ms
+2026-10-06 09:33:00.359 +07:00 [INF] Executed endpoint 'WebBanSach.Controllers.AuthorsController.GetAllAuthor (WebBanSach)'
+2026-10-06 09:33:00.360 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7207/api/Authors/get-all-author - 200 null application/json; charset=utf-8 10.7719ms
+2026-10-06 09:33:00.362 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7207/api/Publishers/get-all-publisher - null null
+2026-10-06 09:33:00.364 +07:00 [INF] Executing endpoint 'WebBanSach.Controllers.PublishersController.GetAllPublisher (WebBanSach)'
+2026-10-06 09:33:00.365 +07:00 [INF] Route matched with {action = "GetAllPublisher", controller = "Publishers"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllPublisher() on controller WebBanSach.Controllers.PublishersController (WebBanSach).
+2026-10-06 09:33:00.367 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Name]
+FROM [Publishers] AS [p]
+2026-10-06 09:33:00.369 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebBanSach.Models.DTO.PublisherDTO, WebBanSach, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-10-06 09:33:00.370 +07:00 [INF] Executed action WebBanSach.Controllers.PublishersController.GetAllPublisher (WebBanSach) in 4.0592ms
+2026-10-06 09:33:00.371 +07:00 [INF] Executed endpoint 'WebBanSach.Controllers.PublishersController.GetAllPublisher (WebBanSach)'
+2026-10-06 09:33:00.372 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7207/api/Publishers/get-all-publisher - 200 null application/json; charset=utf-8 9.5673ms
+2026-10-06 09:33:01.702 +07:00 [INF] Request starting HTTP/1.1 POST https://localhost:7207/api/Books/add-book - application/json; charset=utf-8 289
+2026-10-06 09:33:01.705 +07:00 [INF] Executing endpoint 'WebBanSach.Controllers.BooksController.AddBook (WebBanSach)'
+2026-10-06 09:33:01.705 +07:00 [INF] Route matched with {action = "AddBook", controller = "Books"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddBook(WebBanSach.Models.DTO.AddBookRequestDTO) on controller WebBanSach.Controllers.BooksController (WebBanSach).
+2026-10-06 09:33:01.724 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__addBookRequestDTO_PublisherID_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Publishers] AS [p]
+        WHERE [p].[Id] = @__addBookRequestDTO_PublisherID_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-10-06 09:33:01.730 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__authorId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Authors] AS [a]
+        WHERE [a].[Id] = @__authorId_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-10-06 09:33:01.835 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Boolean), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32), @p8='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Books] ([CoverUrl], [DateAdded], [DateRead], [Description], [Genre], [IsRead], [PublisherID], [Rate], [Title])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2026-10-06 09:33:01.873 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Books_Authors] ([AuthorId], [BookId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1);
+2026-10-06 09:33:01.877 +07:00 [INF] Executing OkObjectResult, writing value of type 'WebBanSach.Models.DTO.AddBookRequestDTO'.
+2026-10-06 09:33:01.880 +07:00 [INF] Executed action WebBanSach.Controllers.BooksController.AddBook (WebBanSach) in 173.6155ms
+2026-10-06 09:33:01.882 +07:00 [INF] Executed endpoint 'WebBanSach.Controllers.BooksController.AddBook (WebBanSach)'
+2026-10-06 09:33:01.883 +07:00 [INF] Request finished HTTP/1.1 POST https://localhost:7207/api/Books/add-book - 200 null application/json; charset=utf-8 181.1272ms
+2026-10-06 09:33:01.894 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7207/api/Books/get-all-books?filterOn=&filterQuery=&sortBy=&isAscending=True - null null
+2026-10-06 09:33:01.896 +07:00 [INF] Executing endpoint 'WebBanSach.Controllers.BooksController.GetAll (WebBanSach)'
+2026-10-06 09:33:01.896 +07:00 [INF] Route matched with {action = "GetAll", controller = "Books"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll(System.String, System.String, System.String, Boolean, Int32, Int32) on controller WebBanSach.Controllers.BooksController (WebBanSach).
+2026-10-06 09:33:01.898 +07:00 [INF] GetAll Book Action method was invoked
+2026-10-06 09:33:01.898 +07:00 [WRN] This is a warning log
+2026-10-06 09:33:01.899 +07:00 [ERR] This is a error log
+2026-10-06 09:33:01.905 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[Description], [t].[IsRead], CASE
+    WHEN [t].[IsRead] = CAST(1 AS bit) THEN [t].[DateRead]
+    ELSE NULL
+END, CASE
+    WHEN [t].[IsRead] = CAST(1 AS bit) THEN [t].[Rate]
+    ELSE NULL
+END, [t].[Genre], [t].[CoverUrl], [t].[DateAdded], [p].[Name], [p].[Id], [t0].[FullName], [t0].[Id], [t0].[Id0]
+FROM (
+    SELECT [b].[Id], [b].[CoverUrl], [b].[DateAdded], [b].[DateRead], [b].[Description], [b].[Genre], [b].[IsRead], [b].[PublisherID], [b].[Rate], [b].[Title]
+    FROM [Books] AS [b]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Publishers] AS [p] ON [t].[PublisherID] = [p].[Id]
+LEFT JOIN (
+    SELECT [a].[FullName], [b0].[Id], [a].[Id] AS [Id0], [b0].[BookId]
+    FROM [Books_Authors] AS [b0]
+    INNER JOIN [Authors] AS [a] ON [b0].[AuthorId] = [a].[Id]
+) AS [t0] ON [t].[Id] = [t0].[BookId]
+ORDER BY [t].[Id], [p].[Id], [t0].[Id]
+2026-10-06 09:33:01.908 +07:00 [INF] Finished GetAllBook request with data [{"Id":2,"Title":"Ti\u1EC3u \u0110\u1ED9i Xe Kh\u00F4ng K\u00EDnh","Description":"V\u00EC Trong Xe C\u00F3 m\u1ED9t tr\u00E1i Tim","IsRead":true,"DateRead":"2026-09-29T06:58:44.443","Rate":5,"Genre":"V\u0103n h\u1ECDc","CoverUrl":"string","DateAdded":"2026-09-29T06:58:44.443","PublisherName":"NXB Ph\u1EA1m Ti\u1EBFn Du\u1EADt","AuthorNames":["Tr\u1EA7n \u0110\u0103ng Khoa"]},{"Id":4,"Title":"Ti\u1EC3u \u0110\u1ED9i Xe Kh\u00F4ng K\u00EDnh","Description":"Trong Xe C\u00F3 M\u1ED9t Tr\u00E1i Tim","IsRead":true,"DateRead":"2026-09-29T07:11:43.374","Rate":5,"Genre":"V\u0103n H\u1ECDc","CoverUrl":"string","DateAdded":"2026-09-29T07:11:43.374","PublisherName":"Nguy\u1EC5n Th\u1ECB \u0110\u1EE9c Tu\u1EA5n","AuthorNames":["Ph\u1EA1m \u0110\u1EE9c Ho\u00E0"]},{"Id":7,"Title":"\u0110\u1EA5u Chi\u1EBFn Th\u1EAFng Ph\u1EADt","Description":"T\u1EC1 Thi\u00EAn \u0110\u1EA1i Th\u00E1nh","IsRead":true,"DateRead":"2026-10-06T00:00:00","Rate":5,"Genre":"Truy\u1EC1n Thuy\u1EBFt","CoverUrl":null,"DateAdded":"2026-10-01T00:00:00","PublisherName":"NXB Tr\u1EA7n \u0110\u0103ng Khoa","AuthorNames":["Tr\u1EA7n \u0110\u0103ng Khoa"]}]
+2026-10-06 09:33:01.910 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebBanSach.Models.DTO.BookWithAuthorAndPublisherDTO, WebBanSach, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-10-06 09:33:01.911 +07:00 [INF] Executed action WebBanSach.Controllers.BooksController.GetAll (WebBanSach) in 13.7297ms
+2026-10-06 09:33:01.912 +07:00 [INF] Executed endpoint 'WebBanSach.Controllers.BooksController.GetAll (WebBanSach)'
+2026-10-06 09:33:01.914 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7207/api/Books/get-all-books?filterOn=&filterQuery=&sortBy=&isAscending=True - 200 null application/json; charset=utf-8 20.1648ms
+2026-10-06 09:33:10.609 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7207/api/Books/get-book-by-id/7 - null null
+2026-10-06 09:33:10.611 +07:00 [INF] Executing endpoint 'WebBanSach.Controllers.BooksController.GetBookById (WebBanSach)'
+2026-10-06 09:33:10.613 +07:00 [INF] Route matched with {action = "GetBookById", controller = "Books"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetBookById(Int32) on controller WebBanSach.Controllers.BooksController (WebBanSach).
+2026-10-06 09:33:10.637 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[Description], [t].[IsRead], [t].[DateRead], [t].[Rate], [t].[Genre], [t].[CoverUrl], [t].[DateAdded], [t].[Name], [t].[Id0], [t0].[FullName], [t0].[Id], [t0].[Id0]
+FROM (
+    SELECT TOP(1) [b].[Id], [b].[Title], [b].[Description], [b].[IsRead], [b].[DateRead], [b].[Rate], [b].[Genre], [b].[CoverUrl], [b].[DateAdded], [p].[Name], [p].[Id] AS [Id0]
+    FROM [Books] AS [b]
+    INNER JOIN [Publishers] AS [p] ON [b].[PublisherID] = [p].[Id]
+    WHERE [b].[Id] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [a].[FullName], [b0].[Id], [a].[Id] AS [Id0], [b0].[BookId]
+    FROM [Books_Authors] AS [b0]
+    INNER JOIN [Authors] AS [a] ON [b0].[AuthorId] = [a].[Id]
+) AS [t0] ON [t].[Id] = [t0].[BookId]
+ORDER BY [t].[Id], [t].[Id0], [t0].[Id]
+2026-10-06 09:33:10.640 +07:00 [INF] Executing OkObjectResult, writing value of type 'WebBanSach.Models.DTO.BookWithAuthorAndPublisherDTO'.
+2026-10-06 09:33:10.641 +07:00 [INF] Executed action WebBanSach.Controllers.BooksController.GetBookById (WebBanSach) in 26.9178ms
+2026-10-06 09:33:10.642 +07:00 [INF] Executed endpoint 'WebBanSach.Controllers.BooksController.GetBookById (WebBanSach)'
+2026-10-06 09:33:10.643 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7207/api/Books/get-book-by-id/7 - 200 null application/json; charset=utf-8 34.3167ms
+2026-10-06 09:33:20.749 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7207/api/Books/get-book-by-id/4 - null null
+2026-10-06 09:33:20.752 +07:00 [INF] Executing endpoint 'WebBanSach.Controllers.BooksController.GetBookById (WebBanSach)'
+2026-10-06 09:33:20.753 +07:00 [INF] Route matched with {action = "GetBookById", controller = "Books"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetBookById(Int32) on controller WebBanSach.Controllers.BooksController (WebBanSach).
+2026-10-06 09:33:20.756 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[Description], [t].[IsRead], [t].[DateRead], [t].[Rate], [t].[Genre], [t].[CoverUrl], [t].[DateAdded], [t].[Name], [t].[Id0], [t0].[FullName], [t0].[Id], [t0].[Id0]
+FROM (
+    SELECT TOP(1) [b].[Id], [b].[Title], [b].[Description], [b].[IsRead], [b].[DateRead], [b].[Rate], [b].[Genre], [b].[CoverUrl], [b].[DateAdded], [p].[Name], [p].[Id] AS [Id0]
+    FROM [Books] AS [b]
+    INNER JOIN [Publishers] AS [p] ON [b].[PublisherID] = [p].[Id]
+    WHERE [b].[Id] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [a].[FullName], [b0].[Id], [a].[Id] AS [Id0], [b0].[BookId]
+    FROM [Books_Authors] AS [b0]
+    INNER JOIN [Authors] AS [a] ON [b0].[AuthorId] = [a].[Id]
+) AS [t0] ON [t].[Id] = [t0].[BookId]
+ORDER BY [t].[Id], [t].[Id0], [t0].[Id]
+2026-10-06 09:33:20.759 +07:00 [INF] Executing OkObjectResult, writing value of type 'WebBanSach.Models.DTO.BookWithAuthorAndPublisherDTO'.
+2026-10-06 09:33:20.760 +07:00 [INF] Executed action WebBanSach.Controllers.BooksController.GetBookById (WebBanSach) in 5.9385ms
+2026-10-06 09:33:20.762 +07:00 [INF] Executed endpoint 'WebBanSach.Controllers.BooksController.GetBookById (WebBanSach)'
+2026-10-06 09:33:20.763 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7207/api/Books/get-book-by-id/4 - 200 null application/json; charset=utf-8 13.5862ms
+2026-10-06 09:33:20.767 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7207/api/Authors/get-all-author - null null
+2026-10-06 09:33:20.769 +07:00 [INF] Executing endpoint 'WebBanSach.Controllers.AuthorsController.GetAllAuthor (WebBanSach)'
+2026-10-06 09:33:20.769 +07:00 [INF] Route matched with {action = "GetAllAuthor", controller = "Authors"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllAuthor() on controller WebBanSach.Controllers.AuthorsController (WebBanSach).
+2026-10-06 09:33:20.772 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[FullName]
+FROM [Authors] AS [a]
+2026-10-06 09:33:20.773 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebBanSach.Models.DTO.AuthorDTO, WebBanSach, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-10-06 09:33:20.774 +07:00 [INF] Executed action WebBanSach.Controllers.AuthorsController.GetAllAuthor (WebBanSach) in 3.4823ms
+2026-10-06 09:33:20.775 +07:00 [INF] Executed endpoint 'WebBanSach.Controllers.AuthorsController.GetAllAuthor (WebBanSach)'
+2026-10-06 09:33:20.777 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7207/api/Authors/get-all-author - 200 null application/json; charset=utf-8 10.0205ms
+2026-10-06 09:33:20.780 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7207/api/Publishers/get-all-publisher - null null
+2026-10-06 09:33:20.782 +07:00 [INF] Executing endpoint 'WebBanSach.Controllers.PublishersController.GetAllPublisher (WebBanSach)'
+2026-10-06 09:33:20.782 +07:00 [INF] Route matched with {action = "GetAllPublisher", controller = "Publishers"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllPublisher() on controller WebBanSach.Controllers.PublishersController (WebBanSach).
+2026-10-06 09:33:20.785 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Name]
+FROM [Publishers] AS [p]
+2026-10-06 09:33:20.787 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebBanSach.Models.DTO.PublisherDTO, WebBanSach, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-10-06 09:33:20.788 +07:00 [INF] Executed action WebBanSach.Controllers.PublishersController.GetAllPublisher (WebBanSach) in 4.4586ms
+2026-10-06 09:33:20.790 +07:00 [INF] Executed endpoint 'WebBanSach.Controllers.PublishersController.GetAllPublisher (WebBanSach)'
+2026-10-06 09:33:20.791 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7207/api/Publishers/get-all-publisher - 200 null application/json; charset=utf-8 11.2587ms
+2026-10-06 09:33:40.750 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7207/api/Books/get-all-books?filterOn=title&filterQuery=&sortBy=title&isAscending=True - null null
+2026-10-06 09:33:40.752 +07:00 [INF] Executing endpoint 'WebBanSach.Controllers.BooksController.GetAll (WebBanSach)'
+2026-10-06 09:33:40.752 +07:00 [INF] Route matched with {action = "GetAll", controller = "Books"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll(System.String, System.String, System.String, Boolean, Int32, Int32) on controller WebBanSach.Controllers.BooksController (WebBanSach).
+2026-10-06 09:33:40.754 +07:00 [INF] GetAll Book Action method was invoked
+2026-10-06 09:33:40.755 +07:00 [WRN] This is a warning log
+2026-10-06 09:33:40.755 +07:00 [ERR] This is a error log
+2026-10-06 09:33:40.772 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[Description], [t].[IsRead], CASE
+    WHEN [t].[IsRead] = CAST(1 AS bit) THEN [t].[DateRead]
+    ELSE NULL
+END, CASE
+    WHEN [t].[IsRead] = CAST(1 AS bit) THEN [t].[Rate]
+    ELSE NULL
+END, [t].[Genre], [t].[CoverUrl], [t].[DateAdded], [p].[Name], [p].[Id], [t0].[FullName], [t0].[Id], [t0].[Id0]
+FROM (
+    SELECT [b].[Id], [b].[CoverUrl], [b].[DateAdded], [b].[DateRead], [b].[Description], [b].[Genre], [b].[IsRead], [b].[PublisherID], [b].[Rate], [b].[Title]
+    FROM [Books] AS [b]
+    ORDER BY [b].[Title]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Publishers] AS [p] ON [t].[PublisherID] = [p].[Id]
+LEFT JOIN (
+    SELECT [a].[FullName], [b0].[Id], [a].[Id] AS [Id0], [b0].[BookId]
+    FROM [Books_Authors] AS [b0]
+    INNER JOIN [Authors] AS [a] ON [b0].[AuthorId] = [a].[Id]
+) AS [t0] ON [t].[Id] = [t0].[BookId]
+ORDER BY [t].[Title], [t].[Id], [p].[Id], [t0].[Id]
+2026-10-06 09:33:40.775 +07:00 [INF] Finished GetAllBook request with data [{"Id":7,"Title":"\u0110\u1EA5u Chi\u1EBFn Th\u1EAFng Ph\u1EADt","Description":"T\u1EC1 Thi\u00EAn \u0110\u1EA1i Th\u00E1nh","IsRead":true,"DateRead":"2026-10-06T00:00:00","Rate":5,"Genre":"Truy\u1EC1n Thuy\u1EBFt","CoverUrl":null,"DateAdded":"2026-10-01T00:00:00","PublisherName":"NXB Tr\u1EA7n \u0110\u0103ng Khoa","AuthorNames":["Tr\u1EA7n \u0110\u0103ng Khoa"]},{"Id":2,"Title":"Ti\u1EC3u \u0110\u1ED9i Xe Kh\u00F4ng K\u00EDnh","Description":"V\u00EC Trong Xe C\u00F3 m\u1ED9t tr\u00E1i Tim","IsRead":true,"DateRead":"2026-09-29T06:58:44.443","Rate":5,"Genre":"V\u0103n h\u1ECDc","CoverUrl":"string","DateAdded":"2026-09-29T06:58:44.443","PublisherName":"NXB Ph\u1EA1m Ti\u1EBFn Du\u1EADt","AuthorNames":["Tr\u1EA7n \u0110\u0103ng Khoa"]},{"Id":4,"Title":"Ti\u1EC3u \u0110\u1ED9i Xe Kh\u00F4ng K\u00EDnh","Description":"Trong Xe C\u00F3 M\u1ED9t Tr\u00E1i Tim","IsRead":true,"DateRead":"2026-09-29T07:11:43.374","Rate":5,"Genre":"V\u0103n H\u1ECDc","CoverUrl":"string","DateAdded":"2026-09-29T07:11:43.374","PublisherName":"Nguy\u1EC5n Th\u1ECB \u0110\u1EE9c Tu\u1EA5n","AuthorNames":["Ph\u1EA1m \u0110\u1EE9c Ho\u00E0"]}]
+2026-10-06 09:33:40.776 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebBanSach.Models.DTO.BookWithAuthorAndPublisherDTO, WebBanSach, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-10-06 09:33:40.777 +07:00 [INF] Executed action WebBanSach.Controllers.BooksController.GetAll (WebBanSach) in 23.4074ms
+2026-10-06 09:33:40.779 +07:00 [INF] Executed endpoint 'WebBanSach.Controllers.BooksController.GetAll (WebBanSach)'
+2026-10-06 09:33:40.779 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7207/api/Books/get-all-books?filterOn=title&filterQuery=&sortBy=title&isAscending=True - 200 null application/json; charset=utf-8 30.163ms
+2026-10-06 09:33:41.614 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7207/api/Books/get-all-books?filterOn=title&filterQuery=&sortBy=title&isAscending=True - null null
+2026-10-06 09:33:41.617 +07:00 [INF] Executing endpoint 'WebBanSach.Controllers.BooksController.GetAll (WebBanSach)'
+2026-10-06 09:33:41.618 +07:00 [INF] Route matched with {action = "GetAll", controller = "Books"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll(System.String, System.String, System.String, Boolean, Int32, Int32) on controller WebBanSach.Controllers.BooksController (WebBanSach).
+2026-10-06 09:33:41.620 +07:00 [INF] GetAll Book Action method was invoked
+2026-10-06 09:33:41.620 +07:00 [WRN] This is a warning log
+2026-10-06 09:33:41.621 +07:00 [ERR] This is a error log
+2026-10-06 09:33:41.624 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[Description], [t].[IsRead], CASE
+    WHEN [t].[IsRead] = CAST(1 AS bit) THEN [t].[DateRead]
+    ELSE NULL
+END, CASE
+    WHEN [t].[IsRead] = CAST(1 AS bit) THEN [t].[Rate]
+    ELSE NULL
+END, [t].[Genre], [t].[CoverUrl], [t].[DateAdded], [p].[Name], [p].[Id], [t0].[FullName], [t0].[Id], [t0].[Id0]
+FROM (
+    SELECT [b].[Id], [b].[CoverUrl], [b].[DateAdded], [b].[DateRead], [b].[Description], [b].[Genre], [b].[IsRead], [b].[PublisherID], [b].[Rate], [b].[Title]
+    FROM [Books] AS [b]
+    ORDER BY [b].[Title]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Publishers] AS [p] ON [t].[PublisherID] = [p].[Id]
+LEFT JOIN (
+    SELECT [a].[FullName], [b0].[Id], [a].[Id] AS [Id0], [b0].[BookId]
+    FROM [Books_Authors] AS [b0]
+    INNER JOIN [Authors] AS [a] ON [b0].[AuthorId] = [a].[Id]
+) AS [t0] ON [t].[Id] = [t0].[BookId]
+ORDER BY [t].[Title], [t].[Id], [p].[Id], [t0].[Id]
+2026-10-06 09:33:41.626 +07:00 [INF] Finished GetAllBook request with data [{"Id":7,"Title":"\u0110\u1EA5u Chi\u1EBFn Th\u1EAFng Ph\u1EADt","Description":"T\u1EC1 Thi\u00EAn \u0110\u1EA1i Th\u00E1nh","IsRead":true,"DateRead":"2026-10-06T00:00:00","Rate":5,"Genre":"Truy\u1EC1n Thuy\u1EBFt","CoverUrl":null,"DateAdded":"2026-10-01T00:00:00","PublisherName":"NXB Tr\u1EA7n \u0110\u0103ng Khoa","AuthorNames":["Tr\u1EA7n \u0110\u0103ng Khoa"]},{"Id":2,"Title":"Ti\u1EC3u \u0110\u1ED9i Xe Kh\u00F4ng K\u00EDnh","Description":"V\u00EC Trong Xe C\u00F3 m\u1ED9t tr\u00E1i Tim","IsRead":true,"DateRead":"2026-09-29T06:58:44.443","Rate":5,"Genre":"V\u0103n h\u1ECDc","CoverUrl":"string","DateAdded":"2026-09-29T06:58:44.443","PublisherName":"NXB Ph\u1EA1m Ti\u1EBFn Du\u1EADt","AuthorNames":["Tr\u1EA7n \u0110\u0103ng Khoa"]},{"Id":4,"Title":"Ti\u1EC3u \u0110\u1ED9i Xe Kh\u00F4ng K\u00EDnh","Description":"Trong Xe C\u00F3 M\u1ED9t Tr\u00E1i Tim","IsRead":true,"DateRead":"2026-09-29T07:11:43.374","Rate":5,"Genre":"V\u0103n H\u1ECDc","CoverUrl":"string","DateAdded":"2026-09-29T07:11:43.374","PublisherName":"Nguy\u1EC5n Th\u1ECB \u0110\u1EE9c Tu\u1EA5n","AuthorNames":["Ph\u1EA1m \u0110\u1EE9c Ho\u00E0"]}]
+2026-10-06 09:33:41.629 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebBanSach.Models.DTO.BookWithAuthorAndPublisherDTO, WebBanSach, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-10-06 09:33:41.631 +07:00 [INF] Executed action WebBanSach.Controllers.BooksController.GetAll (WebBanSach) in 11.2278ms
+2026-10-06 09:33:41.632 +07:00 [INF] Executed endpoint 'WebBanSach.Controllers.BooksController.GetAll (WebBanSach)'
+2026-10-06 09:33:41.633 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7207/api/Books/get-all-books?filterOn=title&filterQuery=&sortBy=title&isAscending=True - 200 null application/json; charset=utf-8 18.9934ms
+2026-10-06 09:33:42.439 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7207/api/Books/get-all-books?filterOn=title&filterQuery=&sortBy=title&isAscending=True - null null
+2026-10-06 09:33:42.442 +07:00 [INF] Executing endpoint 'WebBanSach.Controllers.BooksController.GetAll (WebBanSach)'
+2026-10-06 09:33:42.443 +07:00 [INF] Route matched with {action = "GetAll", controller = "Books"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll(System.String, System.String, System.String, Boolean, Int32, Int32) on controller WebBanSach.Controllers.BooksController (WebBanSach).
+2026-10-06 09:33:42.444 +07:00 [INF] GetAll Book Action method was invoked
+2026-10-06 09:33:42.445 +07:00 [WRN] This is a warning log
+2026-10-06 09:33:42.445 +07:00 [ERR] This is a error log
+2026-10-06 09:33:42.448 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[Description], [t].[IsRead], CASE
+    WHEN [t].[IsRead] = CAST(1 AS bit) THEN [t].[DateRead]
+    ELSE NULL
+END, CASE
+    WHEN [t].[IsRead] = CAST(1 AS bit) THEN [t].[Rate]
+    ELSE NULL
+END, [t].[Genre], [t].[CoverUrl], [t].[DateAdded], [p].[Name], [p].[Id], [t0].[FullName], [t0].[Id], [t0].[Id0]
+FROM (
+    SELECT [b].[Id], [b].[CoverUrl], [b].[DateAdded], [b].[DateRead], [b].[Description], [b].[Genre], [b].[IsRead], [b].[PublisherID], [b].[Rate], [b].[Title]
+    FROM [Books] AS [b]
+    ORDER BY [b].[Title]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Publishers] AS [p] ON [t].[PublisherID] = [p].[Id]
+LEFT JOIN (
+    SELECT [a].[FullName], [b0].[Id], [a].[Id] AS [Id0], [b0].[BookId]
+    FROM [Books_Authors] AS [b0]
+    INNER JOIN [Authors] AS [a] ON [b0].[AuthorId] = [a].[Id]
+) AS [t0] ON [t].[Id] = [t0].[BookId]
+ORDER BY [t].[Title], [t].[Id], [p].[Id], [t0].[Id]
+2026-10-06 09:33:42.452 +07:00 [INF] Finished GetAllBook request with data [{"Id":7,"Title":"\u0110\u1EA5u Chi\u1EBFn Th\u1EAFng Ph\u1EADt","Description":"T\u1EC1 Thi\u00EAn \u0110\u1EA1i Th\u00E1nh","IsRead":true,"DateRead":"2026-10-06T00:00:00","Rate":5,"Genre":"Truy\u1EC1n Thuy\u1EBFt","CoverUrl":null,"DateAdded":"2026-10-01T00:00:00","PublisherName":"NXB Tr\u1EA7n \u0110\u0103ng Khoa","AuthorNames":["Tr\u1EA7n \u0110\u0103ng Khoa"]},{"Id":2,"Title":"Ti\u1EC3u \u0110\u1ED9i Xe Kh\u00F4ng K\u00EDnh","Description":"V\u00EC Trong Xe C\u00F3 m\u1ED9t tr\u00E1i Tim","IsRead":true,"DateRead":"2026-09-29T06:58:44.443","Rate":5,"Genre":"V\u0103n h\u1ECDc","CoverUrl":"string","DateAdded":"2026-09-29T06:58:44.443","PublisherName":"NXB Ph\u1EA1m Ti\u1EBFn Du\u1EADt","AuthorNames":["Tr\u1EA7n \u0110\u0103ng Khoa"]},{"Id":4,"Title":"Ti\u1EC3u \u0110\u1ED9i Xe Kh\u00F4ng K\u00EDnh","Description":"Trong Xe C\u00F3 M\u1ED9t Tr\u00E1i Tim","IsRead":true,"DateRead":"2026-09-29T07:11:43.374","Rate":5,"Genre":"V\u0103n H\u1ECDc","CoverUrl":"string","DateAdded":"2026-09-29T07:11:43.374","PublisherName":"Nguy\u1EC5n Th\u1ECB \u0110\u1EE9c Tu\u1EA5n","AuthorNames":["Ph\u1EA1m \u0110\u1EE9c Ho\u00E0"]}]
+2026-10-06 09:33:42.453 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebBanSach.Models.DTO.BookWithAuthorAndPublisherDTO, WebBanSach, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-10-06 09:33:42.454 +07:00 [INF] Executed action WebBanSach.Controllers.BooksController.GetAll (WebBanSach) in 9.9521ms
+2026-10-06 09:33:42.455 +07:00 [INF] Executed endpoint 'WebBanSach.Controllers.BooksController.GetAll (WebBanSach)'
+2026-10-06 09:33:42.456 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7207/api/Books/get-all-books?filterOn=title&filterQuery=&sortBy=title&isAscending=True - 200 null application/json; charset=utf-8 16.9264ms
+2026-10-06 09:33:42.638 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7207/api/Books/get-all-books?filterOn=title&filterQuery=&sortBy=title&isAscending=True - null null
+2026-10-06 09:33:42.640 +07:00 [INF] Executing endpoint 'WebBanSach.Controllers.BooksController.GetAll (WebBanSach)'
+2026-10-06 09:33:42.641 +07:00 [INF] Route matched with {action = "GetAll", controller = "Books"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll(System.String, System.String, System.String, Boolean, Int32, Int32) on controller WebBanSach.Controllers.BooksController (WebBanSach).
+2026-10-06 09:33:42.643 +07:00 [INF] GetAll Book Action method was invoked
+2026-10-06 09:33:42.644 +07:00 [WRN] This is a warning log
+2026-10-06 09:33:42.645 +07:00 [ERR] This is a error log
+2026-10-06 09:33:42.647 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[Description], [t].[IsRead], CASE
+    WHEN [t].[IsRead] = CAST(1 AS bit) THEN [t].[DateRead]
+    ELSE NULL
+END, CASE
+    WHEN [t].[IsRead] = CAST(1 AS bit) THEN [t].[Rate]
+    ELSE NULL
+END, [t].[Genre], [t].[CoverUrl], [t].[DateAdded], [p].[Name], [p].[Id], [t0].[FullName], [t0].[Id], [t0].[Id0]
+FROM (
+    SELECT [b].[Id], [b].[CoverUrl], [b].[DateAdded], [b].[DateRead], [b].[Description], [b].[Genre], [b].[IsRead], [b].[PublisherID], [b].[Rate], [b].[Title]
+    FROM [Books] AS [b]
+    ORDER BY [b].[Title]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Publishers] AS [p] ON [t].[PublisherID] = [p].[Id]
+LEFT JOIN (
+    SELECT [a].[FullName], [b0].[Id], [a].[Id] AS [Id0], [b0].[BookId]
+    FROM [Books_Authors] AS [b0]
+    INNER JOIN [Authors] AS [a] ON [b0].[AuthorId] = [a].[Id]
+) AS [t0] ON [t].[Id] = [t0].[BookId]
+ORDER BY [t].[Title], [t].[Id], [p].[Id], [t0].[Id]
+2026-10-06 09:33:42.651 +07:00 [INF] Finished GetAllBook request with data [{"Id":7,"Title":"\u0110\u1EA5u Chi\u1EBFn Th\u1EAFng Ph\u1EADt","Description":"T\u1EC1 Thi\u00EAn \u0110\u1EA1i Th\u00E1nh","IsRead":true,"DateRead":"2026-10-06T00:00:00","Rate":5,"Genre":"Truy\u1EC1n Thuy\u1EBFt","CoverUrl":null,"DateAdded":"2026-10-01T00:00:00","PublisherName":"NXB Tr\u1EA7n \u0110\u0103ng Khoa","AuthorNames":["Tr\u1EA7n \u0110\u0103ng Khoa"]},{"Id":2,"Title":"Ti\u1EC3u \u0110\u1ED9i Xe Kh\u00F4ng K\u00EDnh","Description":"V\u00EC Trong Xe C\u00F3 m\u1ED9t tr\u00E1i Tim","IsRead":true,"DateRead":"2026-09-29T06:58:44.443","Rate":5,"Genre":"V\u0103n h\u1ECDc","CoverUrl":"string","DateAdded":"2026-09-29T06:58:44.443","PublisherName":"NXB Ph\u1EA1m Ti\u1EBFn Du\u1EADt","AuthorNames":["Tr\u1EA7n \u0110\u0103ng Khoa"]},{"Id":4,"Title":"Ti\u1EC3u \u0110\u1ED9i Xe Kh\u00F4ng K\u00EDnh","Description":"Trong Xe C\u00F3 M\u1ED9t Tr\u00E1i Tim","IsRead":true,"DateRead":"2026-09-29T07:11:43.374","Rate":5,"Genre":"V\u0103n H\u1ECDc","CoverUrl":"string","DateAdded":"2026-09-29T07:11:43.374","PublisherName":"Nguy\u1EC5n Th\u1ECB \u0110\u1EE9c Tu\u1EA5n","AuthorNames":["Ph\u1EA1m \u0110\u1EE9c Ho\u00E0"]}]
+2026-10-06 09:33:42.654 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebBanSach.Models.DTO.BookWithAuthorAndPublisherDTO, WebBanSach, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-10-06 09:33:42.655 +07:00 [INF] Executed action WebBanSach.Controllers.BooksController.GetAll (WebBanSach) in 12.3364ms
+2026-10-06 09:33:42.656 +07:00 [INF] Executed endpoint 'WebBanSach.Controllers.BooksController.GetAll (WebBanSach)'
+2026-10-06 09:33:42.657 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7207/api/Books/get-all-books?filterOn=title&filterQuery=&sortBy=title&isAscending=True - 200 null application/json; charset=utf-8 19.7498ms
+2026-10-06 09:33:42.821 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7207/api/Books/get-all-books?filterOn=title&filterQuery=&sortBy=title&isAscending=True - null null
+2026-10-06 09:33:42.824 +07:00 [INF] Executing endpoint 'WebBanSach.Controllers.BooksController.GetAll (WebBanSach)'
+2026-10-06 09:33:42.824 +07:00 [INF] Route matched with {action = "GetAll", controller = "Books"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll(System.String, System.String, System.String, Boolean, Int32, Int32) on controller WebBanSach.Controllers.BooksController (WebBanSach).
+2026-10-06 09:33:42.826 +07:00 [INF] GetAll Book Action method was invoked
+2026-10-06 09:33:42.826 +07:00 [WRN] This is a warning log
+2026-10-06 09:33:42.826 +07:00 [ERR] This is a error log
+2026-10-06 09:33:42.828 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[Description], [t].[IsRead], CASE
+    WHEN [t].[IsRead] = CAST(1 AS bit) THEN [t].[DateRead]
+    ELSE NULL
+END, CASE
+    WHEN [t].[IsRead] = CAST(1 AS bit) THEN [t].[Rate]
+    ELSE NULL
+END, [t].[Genre], [t].[CoverUrl], [t].[DateAdded], [p].[Name], [p].[Id], [t0].[FullName], [t0].[Id], [t0].[Id0]
+FROM (
+    SELECT [b].[Id], [b].[CoverUrl], [b].[DateAdded], [b].[DateRead], [b].[Description], [b].[Genre], [b].[IsRead], [b].[PublisherID], [b].[Rate], [b].[Title]
+    FROM [Books] AS [b]
+    ORDER BY [b].[Title]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Publishers] AS [p] ON [t].[PublisherID] = [p].[Id]
+LEFT JOIN (
+    SELECT [a].[FullName], [b0].[Id], [a].[Id] AS [Id0], [b0].[BookId]
+    FROM [Books_Authors] AS [b0]
+    INNER JOIN [Authors] AS [a] ON [b0].[AuthorId] = [a].[Id]
+) AS [t0] ON [t].[Id] = [t0].[BookId]
+ORDER BY [t].[Title], [t].[Id], [p].[Id], [t0].[Id]
+2026-10-06 09:33:42.831 +07:00 [INF] Finished GetAllBook request with data [{"Id":7,"Title":"\u0110\u1EA5u Chi\u1EBFn Th\u1EAFng Ph\u1EADt","Description":"T\u1EC1 Thi\u00EAn \u0110\u1EA1i Th\u00E1nh","IsRead":true,"DateRead":"2026-10-06T00:00:00","Rate":5,"Genre":"Truy\u1EC1n Thuy\u1EBFt","CoverUrl":null,"DateAdded":"2026-10-01T00:00:00","PublisherName":"NXB Tr\u1EA7n \u0110\u0103ng Khoa","AuthorNames":["Tr\u1EA7n \u0110\u0103ng Khoa"]},{"Id":2,"Title":"Ti\u1EC3u \u0110\u1ED9i Xe Kh\u00F4ng K\u00EDnh","Description":"V\u00EC Trong Xe C\u00F3 m\u1ED9t tr\u00E1i Tim","IsRead":true,"DateRead":"2026-09-29T06:58:44.443","Rate":5,"Genre":"V\u0103n h\u1ECDc","CoverUrl":"string","DateAdded":"2026-09-29T06:58:44.443","PublisherName":"NXB Ph\u1EA1m Ti\u1EBFn Du\u1EADt","AuthorNames":["Tr\u1EA7n \u0110\u0103ng Khoa"]},{"Id":4,"Title":"Ti\u1EC3u \u0110\u1ED9i Xe Kh\u00F4ng K\u00EDnh","Description":"Trong Xe C\u00F3 M\u1ED9t Tr\u00E1i Tim","IsRead":true,"DateRead":"2026-09-29T07:11:43.374","Rate":5,"Genre":"V\u0103n H\u1ECDc","CoverUrl":"string","DateAdded":"2026-09-29T07:11:43.374","PublisherName":"Nguy\u1EC5n Th\u1ECB \u0110\u1EE9c Tu\u1EA5n","AuthorNames":["Ph\u1EA1m \u0110\u1EE9c Ho\u00E0"]}]
+2026-10-06 09:33:42.832 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebBanSach.Models.DTO.BookWithAuthorAndPublisherDTO, WebBanSach, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-10-06 09:33:42.833 +07:00 [INF] Executed action WebBanSach.Controllers.BooksController.GetAll (WebBanSach) in 7.6172ms
+2026-10-06 09:33:42.834 +07:00 [INF] Executed endpoint 'WebBanSach.Controllers.BooksController.GetAll (WebBanSach)'
+2026-10-06 09:33:42.835 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7207/api/Books/get-all-books?filterOn=title&filterQuery=&sortBy=title&isAscending=True - 200 null application/json; charset=utf-8 13.8091ms
+2026-10-06 09:33:42.990 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7207/api/Books/get-all-books?filterOn=title&filterQuery=&sortBy=title&isAscending=True - null null
+2026-10-06 09:33:42.993 +07:00 [INF] Executing endpoint 'WebBanSach.Controllers.BooksController.GetAll (WebBanSach)'
+2026-10-06 09:33:42.994 +07:00 [INF] Route matched with {action = "GetAll", controller = "Books"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll(System.String, System.String, System.String, Boolean, Int32, Int32) on controller WebBanSach.Controllers.BooksController (WebBanSach).
+2026-10-06 09:33:42.995 +07:00 [INF] GetAll Book Action method was invoked
+2026-10-06 09:33:42.996 +07:00 [WRN] This is a warning log
+2026-10-06 09:33:42.996 +07:00 [ERR] This is a error log
+2026-10-06 09:33:42.998 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[Description], [t].[IsRead], CASE
+    WHEN [t].[IsRead] = CAST(1 AS bit) THEN [t].[DateRead]
+    ELSE NULL
+END, CASE
+    WHEN [t].[IsRead] = CAST(1 AS bit) THEN [t].[Rate]
+    ELSE NULL
+END, [t].[Genre], [t].[CoverUrl], [t].[DateAdded], [p].[Name], [p].[Id], [t0].[FullName], [t0].[Id], [t0].[Id0]
+FROM (
+    SELECT [b].[Id], [b].[CoverUrl], [b].[DateAdded], [b].[DateRead], [b].[Description], [b].[Genre], [b].[IsRead], [b].[PublisherID], [b].[Rate], [b].[Title]
+    FROM [Books] AS [b]
+    ORDER BY [b].[Title]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Publishers] AS [p] ON [t].[PublisherID] = [p].[Id]
+LEFT JOIN (
+    SELECT [a].[FullName], [b0].[Id], [a].[Id] AS [Id0], [b0].[BookId]
+    FROM [Books_Authors] AS [b0]
+    INNER JOIN [Authors] AS [a] ON [b0].[AuthorId] = [a].[Id]
+) AS [t0] ON [t].[Id] = [t0].[BookId]
+ORDER BY [t].[Title], [t].[Id], [p].[Id], [t0].[Id]
+2026-10-06 09:33:43.000 +07:00 [INF] Finished GetAllBook request with data [{"Id":7,"Title":"\u0110\u1EA5u Chi\u1EBFn Th\u1EAFng Ph\u1EADt","Description":"T\u1EC1 Thi\u00EAn \u0110\u1EA1i Th\u00E1nh","IsRead":true,"DateRead":"2026-10-06T00:00:00","Rate":5,"Genre":"Truy\u1EC1n Thuy\u1EBFt","CoverUrl":null,"DateAdded":"2026-10-01T00:00:00","PublisherName":"NXB Tr\u1EA7n \u0110\u0103ng Khoa","AuthorNames":["Tr\u1EA7n \u0110\u0103ng Khoa"]},{"Id":2,"Title":"Ti\u1EC3u \u0110\u1ED9i Xe Kh\u00F4ng K\u00EDnh","Description":"V\u00EC Trong Xe C\u00F3 m\u1ED9t tr\u00E1i Tim","IsRead":true,"DateRead":"2026-09-29T06:58:44.443","Rate":5,"Genre":"V\u0103n h\u1ECDc","CoverUrl":"string","DateAdded":"2026-09-29T06:58:44.443","PublisherName":"NXB Ph\u1EA1m Ti\u1EBFn Du\u1EADt","AuthorNames":["Tr\u1EA7n \u0110\u0103ng Khoa"]},{"Id":4,"Title":"Ti\u1EC3u \u0110\u1ED9i Xe Kh\u00F4ng K\u00EDnh","Description":"Trong Xe C\u00F3 M\u1ED9t Tr\u00E1i Tim","IsRead":true,"DateRead":"2026-09-29T07:11:43.374","Rate":5,"Genre":"V\u0103n H\u1ECDc","CoverUrl":"string","DateAdded":"2026-09-29T07:11:43.374","PublisherName":"Nguy\u1EC5n Th\u1ECB \u0110\u1EE9c Tu\u1EA5n","AuthorNames":["Ph\u1EA1m \u0110\u1EE9c Ho\u00E0"]}]
+2026-10-06 09:33:43.002 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebBanSach.Models.DTO.BookWithAuthorAndPublisherDTO, WebBanSach, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-10-06 09:33:43.002 +07:00 [INF] Executed action WebBanSach.Controllers.BooksController.GetAll (WebBanSach) in 7.762ms
+2026-10-06 09:33:43.003 +07:00 [INF] Executed endpoint 'WebBanSach.Controllers.BooksController.GetAll (WebBanSach)'
+2026-10-06 09:33:43.005 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7207/api/Books/get-all-books?filterOn=title&filterQuery=&sortBy=title&isAscending=True - 200 null application/json; charset=utf-8 14.3947ms
+2026-10-06 09:33:43.165 +07:00 [INF] Request starting HTTP/1.1 GET https://localhost:7207/api/Books/get-all-books?filterOn=title&filterQuery=&sortBy=title&isAscending=True - null null
+2026-10-06 09:33:43.166 +07:00 [INF] Executing endpoint 'WebBanSach.Controllers.BooksController.GetAll (WebBanSach)'
+2026-10-06 09:33:43.167 +07:00 [INF] Route matched with {action = "GetAll", controller = "Books"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll(System.String, System.String, System.String, Boolean, Int32, Int32) on controller WebBanSach.Controllers.BooksController (WebBanSach).
+2026-10-06 09:33:43.168 +07:00 [INF] GetAll Book Action method was invoked
+2026-10-06 09:33:43.169 +07:00 [WRN] This is a warning log
+2026-10-06 09:33:43.169 +07:00 [ERR] This is a error log
+2026-10-06 09:33:43.171 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[Title], [t].[Description], [t].[IsRead], CASE
+    WHEN [t].[IsRead] = CAST(1 AS bit) THEN [t].[DateRead]
+    ELSE NULL
+END, CASE
+    WHEN [t].[IsRead] = CAST(1 AS bit) THEN [t].[Rate]
+    ELSE NULL
+END, [t].[Genre], [t].[CoverUrl], [t].[DateAdded], [p].[Name], [p].[Id], [t0].[FullName], [t0].[Id], [t0].[Id0]
+FROM (
+    SELECT [b].[Id], [b].[CoverUrl], [b].[DateAdded], [b].[DateRead], [b].[Description], [b].[Genre], [b].[IsRead], [b].[PublisherID], [b].[Rate], [b].[Title]
+    FROM [Books] AS [b]
+    ORDER BY [b].[Title]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+INNER JOIN [Publishers] AS [p] ON [t].[PublisherID] = [p].[Id]
+LEFT JOIN (
+    SELECT [a].[FullName], [b0].[Id], [a].[Id] AS [Id0], [b0].[BookId]
+    FROM [Books_Authors] AS [b0]
+    INNER JOIN [Authors] AS [a] ON [b0].[AuthorId] = [a].[Id]
+) AS [t0] ON [t].[Id] = [t0].[BookId]
+ORDER BY [t].[Title], [t].[Id], [p].[Id], [t0].[Id]
+2026-10-06 09:33:43.174 +07:00 [INF] Finished GetAllBook request with data [{"Id":7,"Title":"\u0110\u1EA5u Chi\u1EBFn Th\u1EAFng Ph\u1EADt","Description":"T\u1EC1 Thi\u00EAn \u0110\u1EA1i Th\u00E1nh","IsRead":true,"DateRead":"2026-10-06T00:00:00","Rate":5,"Genre":"Truy\u1EC1n Thuy\u1EBFt","CoverUrl":null,"DateAdded":"2026-10-01T00:00:00","PublisherName":"NXB Tr\u1EA7n \u0110\u0103ng Khoa","AuthorNames":["Tr\u1EA7n \u0110\u0103ng Khoa"]},{"Id":2,"Title":"Ti\u1EC3u \u0110\u1ED9i Xe Kh\u00F4ng K\u00EDnh","Description":"V\u00EC Trong Xe C\u00F3 m\u1ED9t tr\u00E1i Tim","IsRead":true,"DateRead":"2026-09-29T06:58:44.443","Rate":5,"Genre":"V\u0103n h\u1ECDc","CoverUrl":"string","DateAdded":"2026-09-29T06:58:44.443","PublisherName":"NXB Ph\u1EA1m Ti\u1EBFn Du\u1EADt","AuthorNames":["Tr\u1EA7n \u0110\u0103ng Khoa"]},{"Id":4,"Title":"Ti\u1EC3u \u0110\u1ED9i Xe Kh\u00F4ng K\u00EDnh","Description":"Trong Xe C\u00F3 M\u1ED9t Tr\u00E1i Tim","IsRead":true,"DateRead":"2026-09-29T07:11:43.374","Rate":5,"Genre":"V\u0103n H\u1ECDc","CoverUrl":"string","DateAdded":"2026-09-29T07:11:43.374","PublisherName":"Nguy\u1EC5n Th\u1ECB \u0110\u1EE9c Tu\u1EA5n","AuthorNames":["Ph\u1EA1m \u0110\u1EE9c Ho\u00E0"]}]
+2026-10-06 09:33:43.175 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[WebBanSach.Models.DTO.BookWithAuthorAndPublisherDTO, WebBanSach, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-10-06 09:33:43.176 +07:00 [INF] Executed action WebBanSach.Controllers.BooksController.GetAll (WebBanSach) in 8.0442ms
+2026-10-06 09:33:43.178 +07:00 [INF] Executed endpoint 'WebBanSach.Controllers.BooksController.GetAll (WebBanSach)'
+2026-10-06 09:33:43.180 +07:00 [INF] Request finished HTTP/1.1 GET https://localhost:7207/api/Books/get-all-books?filterOn=title&filterQuery=&sortBy=title&isAscending=True - 200 null application/json; charset=utf-8 15.0798ms

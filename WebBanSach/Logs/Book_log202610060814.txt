@@ -1,0 +1,11 @@
+2026-10-06 08:14:07.396 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7207/api/Auth/Login - application/json 60
+2026-10-06 08:14:07.403 +07:00 [INF] Executing endpoint 'WebBanSach.Controllers.UserController.Login (WebBanSach)'
+2026-10-06 08:14:07.411 +07:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(WebBanSach.Models.DTO.LoginRequestDTO) on controller WebBanSach.Controllers.UserController (WebBanSach).
+2026-10-06 08:14:07.848 +07:00 [INF] Executed DbCommand (22ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-10-06 08:14:07.862 +07:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.String'.
+2026-10-06 08:14:07.863 +07:00 [INF] Executed action WebBanSach.Controllers.UserController.Login (WebBanSach) in 450.4507ms
+2026-10-06 08:14:07.864 +07:00 [INF] Executed endpoint 'WebBanSach.Controllers.UserController.Login (WebBanSach)'
+2026-10-06 08:14:07.865 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7207/api/Auth/Login - 400 null text/plain; charset=utf-8 469.6968ms

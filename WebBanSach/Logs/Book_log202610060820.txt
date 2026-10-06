@@ -1,0 +1,13 @@
+2026-10-06 08:20:11.940 +07:00 [INF] Request starting HTTP/2 POST https://localhost:7207/api/Publishers/add-publisher - application/json 31
+2026-10-06 08:20:11.980 +07:00 [INF] Executing endpoint 'WebBanSach.Controllers.PublishersController.AddPublisher (WebBanSach)'
+2026-10-06 08:20:11.983 +07:00 [INF] Route matched with {action = "AddPublisher", controller = "Publishers"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult AddPublisher(WebBanSach.Models.DTO.AddPublisherRequestDTO) on controller WebBanSach.Controllers.PublishersController (WebBanSach).
+2026-10-06 08:20:12.005 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Publishers] ([Name])
+OUTPUT INSERTED.[Id]
+VALUES (@p0);
+2026-10-06 08:20:12.009 +07:00 [INF] Executing OkObjectResult, writing value of type 'WebBanSach.Models.DTO.AddPublisherRequestDTO'.
+2026-10-06 08:20:12.011 +07:00 [INF] Executed action WebBanSach.Controllers.PublishersController.AddPublisher (WebBanSach) in 26.6463ms
+2026-10-06 08:20:12.012 +07:00 [INF] Executed endpoint 'WebBanSach.Controllers.PublishersController.AddPublisher (WebBanSach)'
+2026-10-06 08:20:12.012 +07:00 [INF] Request finished HTTP/2 POST https://localhost:7207/api/Publishers/add-publisher - 200 null application/json; charset=utf-8 72.2114ms

@@ -1,0 +1,15 @@
+2026-10-06 08:26:44.223 +07:00 [INF] User profile is available. Using 'C:\Users\Admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-06 08:26:44.326 +07:00 [WRN] The WebRootPath was not found: D:\LapTrinhWeb2_ThayTan\WebBanSach\WebBanSach\wwwroot. Static files may be unavailable.
+2026-10-06 08:26:44.446 +07:00 [INF] Now listening on: https://localhost:7207
+2026-10-06 08:26:44.447 +07:00 [INF] Now listening on: http://localhost:5212
+2026-10-06 08:26:44.610 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-06 08:26:44.611 +07:00 [INF] Hosting environment: Development
+2026-10-06 08:26:44.611 +07:00 [INF] Content root path: D:\LapTrinhWeb2_ThayTan\WebBanSach\WebBanSach
+2026-10-06 08:26:45.198 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7207/swagger/index.html - null null
+2026-10-06 08:26:45.350 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7207/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-06 08:26:45.350 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7207/_vs/browserLink - null null
+2026-10-06 08:26:45.351 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7207/swagger/index.html - 200 null text/html;charset=utf-8 167.3611ms
+2026-10-06 08:26:45.359 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7207/_framework/aspnetcore-browser-refresh.js - 200 14925 application/javascript; charset=utf-8 8.9755ms
+2026-10-06 08:26:45.388 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7207/_vs/browserLink - 200 null text/javascript; charset=UTF-8 37.9018ms
+2026-10-06 08:26:45.427 +07:00 [INF] Request starting HTTP/2 GET https://localhost:7207/swagger/v1/swagger.json - null null
+2026-10-06 08:26:45.441 +07:00 [INF] Request finished HTTP/2 GET https://localhost:7207/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 14.3807ms

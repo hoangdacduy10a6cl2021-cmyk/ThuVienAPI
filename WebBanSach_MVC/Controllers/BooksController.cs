@@ -56,13 +56,12 @@ namespace WebBanSach_MVC.Controllers
             return View();
         }
 
-        // POST: Books/addBook
         [HttpPost]
         public async Task<IActionResult> addBook(addBookDTO addBookDTO)
         {
+            var client = httpClientFactory.CreateClient();
             try
             {
-                var client = httpClientFactory.CreateClient();
                 var httpRequestMess = new HttpRequestMessage()
                 {
                     Method = HttpMethod.Post,
@@ -83,6 +82,20 @@ namespace WebBanSach_MVC.Controllers
             {
                 ViewBag.Error = ex.Message;
             }
+
+            // load lại dropdown trước khi render lại View, tránh lỗi NullReferenceException
+            List<authorDTO> responseAu = new List<authorDTO>();
+            var httpResponseAu = await client.GetAsync($"{ApiBaseUrl}/api/Authors/get-all-author");
+            httpResponseAu.EnsureSuccessStatusCode();
+            responseAu.AddRange(await httpResponseAu.Content.ReadFromJsonAsync<IEnumerable<authorDTO>>());
+            ViewBag.listAuthor = responseAu;
+
+            List<publisherDTO> responsePu = new List<publisherDTO>();
+            var httpResponsePu = await client.GetAsync($"{ApiBaseUrl}/api/Publishers/get-all-publisher");
+            httpResponsePu.EnsureSuccessStatusCode();
+            responsePu.AddRange(await httpResponsePu.Content.ReadFromJsonAsync<IEnumerable<publisherDTO>>());
+            ViewBag.listPublisher = responsePu;
+
             return View();
         }
 
